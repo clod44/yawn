@@ -1,4 +1,4 @@
-import { useState, useEffect, useTransition, useRef } from "react";
+import { useState, useEffect, useTransition } from "react";
 import { Grid, ScrollArea, Spinner, Flex, Text } from "@radix-ui/themes";
 import NoteCard from "./NoteCard.jsx";
 import { useSettings } from "../../context/SettingsContext.jsx";
@@ -9,7 +9,6 @@ const NotesList = () => {
     const [notes, setNotes] = useState([]);
     const [isPending, startTransition] = useTransition();
     const [loading, setLoading] = useState(true);
-
 
     useEffect(() => {
         setLoading(true);
