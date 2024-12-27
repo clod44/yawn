@@ -14,7 +14,7 @@ const GenericBar = ({
     return (
         <GradientBox
             width={"100%"}
-            position={"sticky"}
+            position={"fixed"}
             top={"0"}
             height={"4rem"}
             className="z-[50]"
