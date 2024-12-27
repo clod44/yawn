@@ -27,19 +27,21 @@ const GenericBar = ({
             angle={180}
         >
             <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
-                {icon}
-                <Text
-                    size={"5"}
-                    asChild
-                    color="gray"
-                    className="font-thin" >
-                    <Link
-                        to={path}
-                        className="cursor-pointer font-thin"
-                    >
-                        {title}
-                    </Link>
-                </Text>
+                <Flex gap="3" align={"center"}>
+                    {icon}
+                    <Text
+                        size={"5"}
+                        asChild
+                        color="gray"
+                        className="font-thin" >
+                        <Link
+                            to={path}
+                            className="cursor-pointer font-thin"
+                        >
+                            {title}
+                        </Link>
+                    </Text>
+                </Flex>
                 <BarDropdown />
             </Flex>
         </GradientBox>

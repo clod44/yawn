@@ -1,5 +1,5 @@
 import { FaHome } from "react-icons/fa";
-import { GoGoal } from "react-icons/go";
+import { FaTasks } from "react-icons/fa";
 import { IoFolderOpen } from "react-icons/io5";
 import { Box } from "@radix-ui/themes";
 import GradientBox from "../GradientBox";
@@ -38,7 +38,7 @@ const BottomNavBar = ({
                     },
                     {
                         path: "/todo",
-                        icon: GoGoal,
+                        icon: FaTasks,
                         title: "",
                     }
                 ]} />
