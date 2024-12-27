@@ -1,6 +1,5 @@
 import { useLocation } from "react-router-dom";
 import { HomeBar, GenericBar } from "./Bars";
-import { Box } from "@radix-ui/themes";
 
 import { IoFolderOpen } from "react-icons/io5";
 
