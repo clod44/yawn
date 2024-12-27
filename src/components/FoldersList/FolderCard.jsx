@@ -30,8 +30,8 @@ const FolderCard = ({
                 open={openCollapsible}
                 onOpenChange={setOpenCollapsible}
             >
-                <Card variant="classic" className="shadow-lg">
-                    <Flex gap="3" align={"center"} justify={"between"} >
+                <Card variant="classic" className="shadow-lg  h-12">
+                    <Flex gap="3" width={"100%"} height={"100%"} align={"center"} justify={"between"} >
                         {openCollapsible ? (
                             <div className="flex-grow">
                                 <Flex gap="3" align={"center"}>
@@ -44,7 +44,7 @@ const FolderCard = ({
                                     />
                                     <TextField.Root
                                         placeholder="Folder title"
-                                        className="flex-grow"
+                                        className="flex-grow animate-in fade-in"
                                         value={folder?.title || "Folder"}
                                         onChange={(e) => setFolder({ ...folder, title: e.target.value })}
                                     />
