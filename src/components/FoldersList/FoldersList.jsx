@@ -5,8 +5,7 @@ import { useSettings } from "../../context/SettingsContext.jsx";
 
 
 const FoldersList = () => {
-    const { listViewType } = useSettings();
-    const [notes, setNotes] = useState([]);
+    const [folders, setFolders] = useState([]);
     const [isPending, startTransition] = useTransition();
     const [loading, setLoading] = useState(true);
 
@@ -14,7 +13,7 @@ const FoldersList = () => {
         setLoading(true);
         setTimeout(() => {
             startTransition(() => {
-                setNotes(Array.from({ length: 20 }, (_, index) => index));
+                setFolders(Array.from({ length: 20 }, (_, index) => index));
             });
             setLoading(false);
         }, 200);
@@ -30,14 +29,14 @@ const FoldersList = () => {
                     </Flex>
                 ) : (
                     <Grid
-                        columns={listViewType === "list" ? "1" : "2"}
+                        columns="1"
                         gap="3"
                         rows="auto"
                         width="100%"
                         p={"3"}
                         className="animate-in fade-in pt-16 pb-64"
                     >
-                        {notes.map((note, index) => (
+                        {folders.map((folder, index) => (
                             <FolderCard key={index} />
                         ))}
                     </Grid>
