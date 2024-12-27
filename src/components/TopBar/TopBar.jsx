@@ -1,6 +1,9 @@
 import { useLocation } from "react-router-dom";
-import { HomeBar, NoteBar, GenericBar } from "./Bars";
+import { HomeBar, GenericBar } from "./Bars";
 import { Box } from "@radix-ui/themes";
+
+import { IoFolderOpen } from "react-icons/io5";
+
 const TopBar = () => {
     const { pathname } = useLocation();
 
@@ -12,7 +15,10 @@ const TopBar = () => {
                         case "/":
                             return <HomeBar />;
                         case "/folders":
-                            return <GenericBar />;
+                            return <GenericBar
+                                title="Folders"
+                                icon={<IoFolderOpen className="size-6 text-gray-500" />}
+                            />;
                         default:
                             return <GenericBar />;
                     }
