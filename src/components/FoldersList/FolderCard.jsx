@@ -1,4 +1,4 @@
-import { Card, Text, Flex, Button, TextField } from "@radix-ui/themes";
+import { Card, Text, Flex, Button, TextField, IconButton } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import Emoji from "react-emoji-render";
@@ -73,9 +73,9 @@ const FolderCard = ({
 
                         <Flex gap="2" align={"center"}>
                             <Collapsible.Trigger asChild>
-                                <Button size={"1"} variant={openCollapsible ? "classic" : "soft"}>
+                                <IconButton size={"2"} variant={openCollapsible ? "classic" : "soft"}>
                                     {openCollapsible ? <FaSave /> : <FaPen />}
-                                </Button>
+                                </IconButton>
                             </Collapsible.Trigger>
                         </Flex>
                     </Flex>
