@@ -1,15 +1,13 @@
 import { useSettings } from "../../../../context/SettingsContext";
-import { Avatar, DropdownMenu } from "@radix-ui/themes";
-
+import { Avatar, DropdownMenu, Switch } from "@radix-ui/themes";
 
 const BarDropdown = () => {
-    const {
-        theme,
-        setTheme
-    } = useSettings();
+    const { theme, setTheme } = useSettings();
+
     const handleThemeToggle = () => {
         setTheme(theme === "dark" ? "light" : "dark");
     };
+
     return (
         <DropdownMenu.Root>
             <DropdownMenu.Trigger>
@@ -24,19 +22,24 @@ const BarDropdown = () => {
                 <DropdownMenu.Item shortcut="⌘ E">Profile</DropdownMenu.Item>
                 <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
                 <DropdownMenu.Separator />
+
                 <DropdownMenu.Item
-                    shortcut="⌘ D"
-                    onClick={handleThemeToggle}
+                    onSelect={event => event.preventDefault()}
                 >
-                    Switch Theme
+                    <label>Dark mode</label>
+                    <Switch
+                        checked={theme === "dark"}
+                        onCheckedChange={handleThemeToggle}
+                    />
                 </DropdownMenu.Item>
+
                 <DropdownMenu.Separator />
                 <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
                     Logout
                 </DropdownMenu.Item>
             </DropdownMenu.Content>
         </DropdownMenu.Root>
-    )
+    );
 }
 
-export default BarDropdown
+export default BarDropdown;
