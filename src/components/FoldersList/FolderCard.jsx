@@ -1,11 +1,10 @@
 import { Card, Text, Flex, Button, TextField } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
-import FolderCardEmojiPicker from "./FolderCardEmojiPicker";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import Emoji from "react-emoji-render";
 import { useState } from "react";
 import { FaPen, FaSave } from "react-icons/fa";
-
+import EmojiPicker from "../EmojiPicker";
 
 
 
@@ -20,7 +19,7 @@ const FolderCard = ({
 
     const handleEmojiSelect = (emojiObject) => {
         console.log(emojiObject);
-        setFolder({ ...folder, emoji: emojiObject.emoji });
+        setFolder({ ...folder, emoji: emojiObject.unicode });
     };
 
     return (
@@ -33,23 +32,44 @@ const FolderCard = ({
             >
                 <Card variant="classic" className="shadow-lg">
                     <Flex gap="3" align={"center"} justify={"between"} >
-                        <Link
-                            to="/"
-                            className="flex-grow"
-                        >
-                            <Flex gap="3" align={"center"} >
-                                <Emoji
-                                    text={folder?.emoji ?? "📂"}
-                                    className="text-md"
-                                    style={{
-                                        textShadow: "0 0 1em rgba(255,255,255, 1)",
-                                    }}
-                                />
-                                <Text as="div" size="3" weight="bold">
-                                    Quick start
-                                </Text>
-                            </Flex>
-                        </Link>
+                        {openCollapsible ? (
+                            <div className="flex-grow">
+                                <Flex gap="3" align={"center"}>
+                                    <Emoji
+                                        text={folder?.emoji ?? "📂"}
+                                        className="text-md"
+                                        style={{
+                                            textShadow: "0 0 1em rgba(255,255,255, 1)",
+                                        }}
+                                    />
+                                    <TextField.Root
+                                        placeholder="Folder title"
+                                        className="flex-grow"
+                                        value={folder?.title || "Folder"}
+                                        onChange={(e) => setFolder({ ...folder, title: e.target.value })}
+                                    />
+                                </Flex>
+                            </div>
+                        ) : (
+                            <Link
+                                to="/"
+                                className="flex-grow"
+                            >
+                                <Flex gap="3" align={"center"}>
+                                    <Emoji
+                                        text={folder?.emoji ?? "📂"}
+                                        className="text-md"
+                                        style={{
+                                            textShadow: "0 0 1em rgba(255,255,255, 1)",
+                                        }}
+                                    />
+                                    <Text as="div" size="3" weight="bold">
+                                        {folder?.title || "Folder"}
+                                    </Text>
+                                </Flex>
+                            </Link>
+                        )}
+
 
                         <Flex gap="2" align={"center"}>
                             <Collapsible.Trigger asChild>
@@ -64,20 +84,7 @@ const FolderCard = ({
                     className={`${styles.CollapsibleContent}`}
                 >
                     <Card variant="classic" className="shadow-lg mx-5 rounded-t-none -translate-y-2 pt-4" >
-                        <Flex gap="3" align={"center"} width={"100%"}>
-                            <TextField.Root
-                                placeholder="School notes"
-                                className="flex-grow"
-                            >
-                                <TextField.Slot>
-                                    Title:
-                                </TextField.Slot>
-                            </TextField.Root>
-                            <FolderCardEmojiPicker
-                                handleEmojiSelect={handleEmojiSelect}
-                                defaultEmoji={folder?.emoji ?? "📂"}
-                            />
-                        </Flex>
+                        <EmojiPicker onEmojiSelect={handleEmojiSelect} />
                     </Card>
                 </Collapsible.Content>
             </Collapsible.Root >
