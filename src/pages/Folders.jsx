@@ -8,7 +8,6 @@ function Folders() {
         <>
             <FoldersList />
             <Fab icon={<LuFolderPlus className="size-6" />} callback={() => { }} />
-            <BottomNavBar />
         </>
     );
 }

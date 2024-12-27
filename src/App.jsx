@@ -8,6 +8,7 @@ import ToDo from "./pages/ToDo";
 import Note from "./pages/Note";
 
 import TopBar from "./components/TopBar";
+import BottomNavBar from "./components/BottomNavBar";
 
 import GradientBox from './components/GradientBox';
 
@@ -35,6 +36,7 @@ function App() {
                         <Route path="/note" element={<Note />} />
                         <Route path="/*" element={<NotFound />} />
                     </Routes>
+                    <BottomNavBar />
                 </GradientBox>
 
             </Router>

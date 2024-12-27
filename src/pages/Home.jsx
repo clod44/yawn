@@ -8,7 +8,6 @@ function Home() {
         <>
             <NotesList />
             <Fab icon={<FaPen className="size-4" />} callback={() => { }} />
-            <BottomNavBar />
         </>
     );
 }
