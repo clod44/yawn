@@ -1,11 +1,14 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Suspense } from 'react';
 
-import NotFound from "./pages/NotFound";
+import Loading from "./components/Loading";
+import lazyImportWithFallback from "./components/LazyImportWithFallback";
 
-import Folders from "./pages/Folders";
-import Home from "./pages/Home";
-import ToDo from "./pages/ToDo";
-import Note from "./pages/Note";
+const Home = lazyImportWithFallback(() => import("./pages/Home"));
+const Folders = lazyImportWithFallback(() => import("./pages/Folders"));
+const ToDo = lazyImportWithFallback(() => import("./pages/ToDo"));
+const Note = lazyImportWithFallback(() => import("./pages/Note"));
+const NotFound = lazyImportWithFallback(() => import("./pages/NotFound"));
 
 import TopBar from "./components/TopBar";
 import BottomNavBar from "./components/BottomNavBar";
@@ -30,18 +33,58 @@ function App() {
                 >
                     <TopBar />
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/folders" element={<Folders />} />
-                        <Route path="/todo" element={<ToDo />} />
-                        <Route path="/note" element={<Note />} />
-                        <Route path="/*" element={<NotFound />} />
+                        <Route index
+                            element={
+                                <Suspense
+                                    key={"home"}
+                                    fallback={<Loading />}
+                                >
+                                    <Home />
+                                </Suspense>
+                            } />
+                        <Route path="/folders" element={
+                            <Suspense
+                                key={"folders"}
+                                fallback={<Loading />}
+                            >
+                                <Folders />
+                            </Suspense>
+                        } />
+                        <Route path="/todo" element={
+                            <Suspense
+                                key={"todo"}
+                                fallback={<Loading />}
+                            >
+                                <ToDo />
+                            </Suspense>
+                        } />
+                        <Route path="/note" element={
+                            <Suspense
+                                key={"note"}
+                                fallback={<Loading />}
+                            >
+                                <Note />
+                            </Suspense>
+                        } />
+                        <Route path="/*" element={
+                            <Suspense
+                                key={"not-found"}
+                                fallback={<Loading />}
+                            >
+                                <NotFound />
+                            </Suspense>
+                        } />
                     </Routes>
                     <BottomNavBar />
                 </GradientBox>
 
-            </Router>
+            </Router >
         </>
     )
+}
+
+function wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
 }
 
 export default App
