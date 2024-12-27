@@ -1,19 +1,12 @@
 import { Flex, Button, TextField } from "@radix-ui/themes";
 import { FaSearch } from "react-icons/fa";
-import { CiGrid2H, CiGrid41 } from "react-icons/ci";
-import { useSettings } from "../../../context/SettingsContext";
+import { GiCardboardBox, GiCardboardBoxClosed } from "react-icons/gi";
+import { useMisc } from "../../../context/MiscContext";
 import GradientBox from "../../GradientBox";
 import BarDropdown from "./BarDropdown";
 
 const HomeBar = () => {
-    const {
-        listViewType,
-        setListViewType,
-    } = useSettings();
-
-    const handleListViewToggle = () => {
-        setListViewType(listViewType == "list" ? "grid" : "list");
-    }
+    const { toggleShowArchiveNotes, setToggleShowArchiveNotes } = useMisc();
 
     return (
         <GradientBox
@@ -33,9 +26,9 @@ const HomeBar = () => {
             <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
                 <Button
                     variant="ghost"
-                    onClick={handleListViewToggle}
+                    onClick={() => setToggleShowArchiveNotes(!toggleShowArchiveNotes)}
                 >
-                    {listViewType == "list" ? <CiGrid41 size={24} /> : <CiGrid2H size={24} />}
+                    {toggleShowArchiveNotes ? <GiCardboardBox size={24} className="animate-in zoom-in" /> : <GiCardboardBoxClosed size={24} />}
                 </Button>
 
                 <TextField.Root

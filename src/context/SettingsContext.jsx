@@ -1,18 +1,20 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useState, useMemo } from "react";
 
 const SettingsContext = createContext();
 
 export const SettingsProvider = ({ children }) => {
     const [theme, setTheme] = useState("dark");
     const [accentColor, setAccentColor] = useState("gray");
-    const [listViewType, setListViewType] = useState("list");
+
+    const value = useMemo(() => ({
+        theme,
+        setTheme,
+        accentColor,
+        setAccentColor,
+    }), [theme, setTheme, accentColor, setAccentColor]);
 
     return (
-        <SettingsContext.Provider value={{
-            theme, setTheme,
-            accentColor, setAccentColor,
-            listViewType, setListViewType,
-        }}>
+        <SettingsContext.Provider value={value}>
             {children}
         </SettingsContext.Provider>
     );
