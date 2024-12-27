@@ -17,7 +17,7 @@ const Fab = ({
             variant="classic"
             radius="full"
             {...props}
-            className={`fixed bottom-28 right-7 size-16 d-flex justify-center items-center rounded-full z-40 shadow-lg cursor-pointer ${className}`}
+            className={`fixed bottom-28 right-7 size-16 d-flex justify-center items-center rounded-full z-40 shadow-lg cursor-pointer animate-in slide-in-from-right-96 fade-in-0 duration-500 ${className}`}
         >
             {icon}
         </Button>

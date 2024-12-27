@@ -1,4 +1,4 @@
-import { Flex, Button, TextField } from "@radix-ui/themes";
+import { Flex, IconButton, TextField, Text } from "@radix-ui/themes";
 import { FaSearch } from "react-icons/fa";
 import { GiCardboardBox, GiCardboardBoxClosed } from "react-icons/gi";
 import { useMisc } from "../../../context/MiscContext";
@@ -24,12 +24,22 @@ const HomeBar = () => {
             angle={180}
         >
             <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
-                <Button
+                <IconButton
                     variant="ghost"
                     onClick={() => setToggleShowArchiveNotes(!toggleShowArchiveNotes)}
+                    style={{
+                        background: toggleShowArchiveNotes ? "radial-gradient(circle, rgba(255,255,255, .2) 0%, rgba(255,255,255, 0) 70%)" : "",
+                    }}
                 >
-                    {toggleShowArchiveNotes ? <GiCardboardBox size={24} className="animate-in zoom-in" /> : <GiCardboardBoxClosed size={24} />}
-                </Button>
+                    {toggleShowArchiveNotes ?
+                        <GiCardboardBox
+                            size={24}
+                            className="animate-in zoom-in"
+
+                        /> :
+                        <GiCardboardBoxClosed size={24} />
+                    }
+                </IconButton>
 
                 <TextField.Root
                     placeholder="Search your notes"

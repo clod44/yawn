@@ -17,26 +17,25 @@ const TabNav = ({
     const location = useLocation();
     return (
         <Grid columns={`${tabs.length}`} gap="3" rows="1" width="auto" p={"3"}>
-            {tabs.map((tab, index) => (
-                <Link
-                    key={index}
-                    to={tab.path}
-                    style={{ textDecoration: "none" }}
-                >
-                    <Button
-                        className="w-full h-full py-2 cursor-pointer"
-                        variant={
-                            location.pathname === tab.path
-                                ? (tab.activeVariant ?? "classic")
-                                : (tab.passiveVariant ?? "ghost")
-                        }
-                        highContrast={location.pathname === tab.path}
-                    >
-                        {tab.icon && <tab.icon size={20} />}
-                        {tab.title}
-                    </Button>
-                </Link>
-            ))}
+            {tabs.map((tab, index) => {
+                const active = location.pathname === tab.path;
+                return (
+                    <Link key={index} to={tab.path} style={{ textDecoration: "none" }}>
+                        <Button
+                            className={"w-full h-full py-2 cursor-pointer " + (active && "animate-in fade-in-0 slide-in-from-bottom-1")}
+                            variant={
+                                active
+                                    ? tab.activeVariant ?? "classic"
+                                    : tab.passiveVariant ?? "ghost"
+                            }
+                            highContrast={active}
+                        >
+                            {tab.icon && <tab.icon size={20} />}
+                            {tab.title}
+                        </Button>
+                    </Link>
+                );
+            })}
         </Grid>
     );
 };
