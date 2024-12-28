@@ -1,4 +1,4 @@
-import { Flex, IconButton, TextField, Text } from "@radix-ui/themes";
+import { Flex, IconButton, TextField } from "@radix-ui/themes";
 import { FaSearch } from "react-icons/fa";
 import { GiCardboardBox, GiCardboardBoxClosed } from "react-icons/gi";
 import { useMisc } from "../../../context/MiscContext";
