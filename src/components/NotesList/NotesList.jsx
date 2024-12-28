@@ -1,4 +1,4 @@
-import { useState, useEffect, useTransition, forwardRef } from "react";
+import { useState, useEffect, useTransition, forwardRef, memo, useMemo } from "react";
 import { ScrollArea, Spinner, Flex, Text } from "@radix-ui/themes";
 import NoteCard from "./NoteCard.jsx";
 import { useSettings } from "../../context/SettingsContext.jsx";
@@ -7,6 +7,8 @@ import AutoSizer from "react-virtualized-auto-sizer";
 
 
 const PADDING_SIZE = 60; //this gets applied both top and bottom
+
+const MemoizedNoteCard = memo(NoteCard);
 const NoteCardWrapper = ({
     note,
     index,
@@ -14,15 +16,13 @@ const NoteCardWrapper = ({
     className = "p-3 py-1",
     ...props
 }) => {
+    const memoizedStyle = useMemo(() => ({
+        ...style,
+        top: `${parseFloat(style.top) + PADDING_SIZE}px`
+    }), [style]);
     return (
-        <div
-            className={className}
-            style={{
-                ...style,
-                top: `${parseFloat(style.top) + PADDING_SIZE}px`
-            }}
-        >
-            <NoteCard index={index} note={note} className="w-full h-full" />
+        <div className={className} style={memoizedStyle}>
+            <MemoizedNoteCard index={index} note={note} className="w-full h-full" />
         </div>
     )
 }
@@ -39,7 +39,6 @@ const innerElementType = forwardRef(({ style, ...rest }, ref) => (
 ));
 
 const NotesList = () => {
-    const { listViewType } = useSettings();
     const [notes, setNotes] = useState([]);
     const [isPending, startTransition] = useTransition();
     const [loading, setLoading] = useState(true);
@@ -53,6 +52,7 @@ const NotesList = () => {
             setLoading(false);
         }, 200);
     }, []);
+
 
     return (
         <>
@@ -81,6 +81,7 @@ const NotesList = () => {
             </ScrollArea>
         </>
     );
+
 };
 
 export default NotesList;

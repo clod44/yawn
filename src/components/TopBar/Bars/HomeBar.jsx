@@ -35,7 +35,6 @@ const HomeBar = () => {
                         <GiCardboardBox
                             size={24}
                             className="animate-in zoom-in"
-
                         /> :
                         <GiCardboardBoxClosed size={24} />
                     }

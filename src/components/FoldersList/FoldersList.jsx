@@ -1,7 +1,6 @@
 import { useState, useEffect, useTransition } from "react";
 import { Grid, ScrollArea, Spinner, Flex, Text } from "@radix-ui/themes";
 import FolderCard from "./FolderCard.jsx";
-import { useSettings } from "../../context/SettingsContext.jsx";
 
 
 const FoldersList = () => {
