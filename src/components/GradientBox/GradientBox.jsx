@@ -1,36 +1,30 @@
 import { Box } from "@radix-ui/themes";
-import { useSettings } from "../../context/SettingsContext";
-import colors from 'tailwindcss/colors';
 
 const GradientBox = ({
-    darkFrom = "green-500",
-    darkTo = "red-500",
-    darkVia = "green-500",
-    lightFrom = "red-500",
-    lightTo = "green-500",
-    lightVia = "red-500",
-    angle = 0,
+    from = "dark:from-neutral-800 from-white", // don't forget "from-" prefix
+    to = "to-transparent", // don't forget "to-" prefix
+    direction = "to-b", // (e.g., "to-r", "to-b")
     children,
     className,
     ...props
 }) => {
-    const { theme } = useSettings();
-
-    const getColor = (colorWithShade) => {
-        const [color, shade] = colorWithShade.includes('-') ? colorWithShade.split('-') : [colorWithShade, '500'];
-        return colors[color]?.[shade] || colorWithShade;
+    //avoid tailwindcss purges
+    const gradientDirections = {
+        "to-r": "bg-gradient-to-r",
+        "to-b": "bg-gradient-to-b",
+        "to-l": "bg-gradient-to-l",
+        "to-t": "bg-gradient-to-t",
+        "to-br": "bg-gradient-to-br",
+        "to-bl": "bg-gradient-to-bl",
+        "to-tl": "bg-gradient-to-tl",
+        "to-tr": "bg-gradient-to-tr",
     };
 
-    const gradientStyle = theme === "dark"
-        ? `linear-gradient(${angle}deg, ${getColor(darkFrom)}, ${getColor(darkVia)}, ${getColor(darkTo)})`
-        : `linear-gradient(${angle}deg, ${getColor(lightFrom)}, ${getColor(lightVia)}, ${getColor(lightTo)})`;
+    const gradientDirectionClass = gradientDirections[direction] || gradientDirections["to-b"];
 
     return (
         <Box
-            className={className}
-            style={{
-                background: gradientStyle,
-            }}
+            className={`${gradientDirectionClass} ${from} ${to} ${className}`}
             {...props}
         >
             {children}

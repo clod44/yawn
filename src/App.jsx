@@ -25,12 +25,6 @@ function App() {
                     height={"100%"}
                     position={"fixed"}
                     top={"0"}
-                    darkFrom="neutral-900"
-                    darkTo="neutral-900"
-                    darkVia="neutral-800"
-                    lightFrom="white"
-                    lightTo="gray-100"
-                    lightVia="white"
                 >
                     <TopBar />
                     <Routes>

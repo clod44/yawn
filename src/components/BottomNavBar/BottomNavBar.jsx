@@ -17,12 +17,7 @@ const BottomNavBar = ({
                 position={"fixed"}
                 bottom={"0"}
                 className="z-[5]"
-                darkFrom="neutral-900"
-                darkTo="transparent"
-                darkVia="neutral-900"
-                lightFrom="white"
-                lightTo="transparent"
-                lightVia="white"
+                direction="to-t"
                 {...props}
             >
                 <TabNav tabs={[

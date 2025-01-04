@@ -18,13 +18,6 @@ const GenericBar = ({
             top={"0"}
             height={"4rem"}
             className="z-[50]"
-            darkFrom="neutral-900"
-            darkTo="transparent"
-            darkVia="neutral-900"
-            lightFrom="white"
-            lightTo="transparent"
-            lightVia="white"
-            angle={180}
         >
             <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
                 <Flex gap="3" align={"center"}>
