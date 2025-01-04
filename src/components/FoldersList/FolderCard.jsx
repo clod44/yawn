@@ -1,10 +1,11 @@
-import { Card, Text, Flex, TextField, IconButton } from "@radix-ui/themes";
+import { Text, Flex, TextField, IconButton } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import * as Collapsible from "@radix-ui/react-collapsible";
 import Emoji from "react-emoji-render";
 import { useState, lazy, Suspense } from "react";
 import Loading from "../Loading";
 import { FaPen, FaSave } from "react-icons/fa";
+import Card from "../Card";
 
 const EmojiPicker = lazy(() => import("../EmojiPicker"));
 
@@ -30,7 +31,7 @@ const FolderCard = ({
                 open={openCollapsible}
                 onOpenChange={setOpenCollapsible}
             >
-                <Card variant="classic" className="shadow-lg  h-12">
+                <Card className="w-full h-12">
                     <Flex gap="3" width={"100%"} height={"100%"} align={"center"} justify={"between"} >
                         {openCollapsible ? (
                             <div className="flex-grow">
@@ -83,7 +84,7 @@ const FolderCard = ({
                 <Collapsible.Content
                     className={`${styles.CollapsibleContent}`}
                 >
-                    <Card variant="classic" className="shadow-lg mx-5 rounded-t-none -translate-y-2 pt-4" >
+                    <Card className="mx-5 rounded-t-none -translate-y-2 pt-4" >
                         <Suspense fallback={<Loading />}>
                             <EmojiPicker onEmojiSelect={handleEmojiSelect} />
                         </Suspense>
