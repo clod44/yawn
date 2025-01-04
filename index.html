@@ -38,11 +38,21 @@
 </head>
 
 <body style="background-color: rgb(0, 0, 0);">
-    <div style="height: 100vh; display: flex; justify-content: center; align-items: center;">
+    <div id="spinner" style="height: 100vh; display: flex; justify-content: center; align-items: center;">
         <span class="loader"></span>
     </div>
 
     <div id="root"></div>
+
+    <script type="module">
+        document.addEventListener('DOMContentLoaded', () => {
+            const spinner = document.getElementById('spinner');
+            if (spinner) {
+                spinner.style.display = 'none';
+            }
+        });
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
 </body>
 
