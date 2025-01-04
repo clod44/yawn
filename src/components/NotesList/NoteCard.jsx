@@ -1,17 +1,18 @@
-import { Card, Text, Flex, Box } from "@radix-ui/themes";
+import { Text, Flex, Box } from "@radix-ui/themes";
 import NoteCardDropdown from "./NoteCardDropdown";
+import Card from "../Card";
 
 
 
 const NoteCard = ({
     note,
     index,
-    className,
+    className = "w-full",
     ...props
 }) => {
     return (
         <>
-            <div className={"w-full shadow-lg border dark:border-neutral-600 border-neutral-300 p-2 dark:bg-neutral-800 bg-white rounded-md " + className} {...props}>
+            <Card className={className} {...props}>
                 <Flex gap="3" align={"center"} justify={"between"}>
                     <Box>
                         <Text as="div" size="3" weight="bold">Quick start {index + 1}</Text>
@@ -22,7 +23,7 @@ const NoteCard = ({
                 <Text as="div" color="gray" size="2">
                     Start building your next project in minutes ...
                 </Text>
-            </div>
+            </Card>
         </>
     )
 }
