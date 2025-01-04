@@ -1,5 +1,5 @@
 import { useState, useEffect, useTransition } from "react";
-import { Grid, ScrollArea, Spinner, Flex, Text } from "@radix-ui/themes";
+import { Grid, ScrollArea, Spinner, Flex } from "@radix-ui/themes";
 import FolderCard from "./FolderCard.jsx";
 
 
@@ -10,12 +10,10 @@ const FoldersList = () => {
 
     useEffect(() => {
         setLoading(true);
-        setTimeout(() => {
-            startTransition(() => {
-                setFolders(Array.from({ length: 20 }, (_, index) => index));
-            });
-            setLoading(false);
-        }, 200);
+        startTransition(() => {
+            setFolders(Array.from({ length: 20 }, (_, index) => index));
+        });
+        setLoading(false);
     }, []);
 
     return (
@@ -24,7 +22,6 @@ const FoldersList = () => {
                 {(isPending || loading) ? (
                     <Flex justify={"center"} align={"center"} height={"100%"} gap="3" direction={"column"}>
                         <Spinner />
-                        <Text size={"1"} className="text-neutral-500">Artificial Delay...</Text>
                     </Flex>
                 ) : (
                     <Grid

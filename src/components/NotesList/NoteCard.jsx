@@ -12,7 +12,7 @@ const NoteCard = ({
 }) => {
     return (
         <>
-            <Card className={className} {...props}>
+            <Card className={`animate-in slide-in-from-top-96 fade-in-0 duration-500 ${className}`} {...props}>
                 <Flex gap="3" align={"center"} justify={"between"}>
                     <Box>
                         <Text as="div" size="3" weight="bold">Quick start {index + 1}</Text>

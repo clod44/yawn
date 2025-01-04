@@ -31,7 +31,7 @@ const FolderCard = ({
                 open={openCollapsible}
                 onOpenChange={setOpenCollapsible}
             >
-                <Card className="w-full h-12">
+                <Card className={`animate-in slide-in-from-top-96 fade-in-0 duration-500`}>
                     <Flex gap="3" width={"100%"} height={"100%"} align={"center"} justify={"between"} >
                         {openCollapsible ? (
                             <div className="flex-grow">

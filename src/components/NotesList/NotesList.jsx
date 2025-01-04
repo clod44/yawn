@@ -1,7 +1,6 @@
 import { useState, useEffect, useTransition, forwardRef, memo, useMemo } from "react";
-import { ScrollArea, Spinner, Flex, Text } from "@radix-ui/themes";
+import { ScrollArea, Spinner, Flex } from "@radix-ui/themes";
 import NoteCard from "./NoteCard.jsx";
-import { useSettings } from "../../context/SettingsContext.jsx";
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from "react-virtualized-auto-sizer";
 
@@ -45,12 +44,10 @@ const NotesList = () => {
 
     useEffect(() => {
         setLoading(true);
-        setTimeout(() => {
-            startTransition(() => {
-                setNotes(Array.from({ length: 200 }, (_, index) => index));
-            });
-            setLoading(false);
-        }, 200);
+        startTransition(() => {
+            setNotes(Array.from({ length: 200 }, (_, index) => index));
+        });
+        setLoading(false);
     }, []);
 
 
@@ -60,7 +57,6 @@ const NotesList = () => {
                 {(isPending || loading) ? (
                     <Flex justify={"center"} align={"center"} height={"100%"} gap="3" direction={"column"}>
                         <Spinner />
-                        <Text size={"1"} className="text-neutral-500">Artificial Delay...</Text>
                     </Flex>
                 ) : (
                     <AutoSizer>
