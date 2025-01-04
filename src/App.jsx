@@ -8,6 +8,7 @@ const Home = lazyImportWithFallback(() => import("./pages/Home"));
 const Folders = lazyImportWithFallback(() => import("./pages/Folders"));
 const ToDo = lazyImportWithFallback(() => import("./pages/ToDo"));
 const Note = lazyImportWithFallback(() => import("./pages/Note"));
+const Test = lazyImportWithFallback(() => import("./pages/Test"));
 const NotFound = lazyImportWithFallback(() => import("./pages/NotFound"));
 
 import TopBar from "./components/TopBar";
@@ -28,7 +29,7 @@ function App() {
                     darkTo="neutral-900"
                     darkVia="neutral-800"
                     lightFrom="white"
-                    lightTo="transparent"
+                    lightTo="gray-100"
                     lightVia="white"
                 >
                     <TopBar />
@@ -66,6 +67,14 @@ function App() {
                                 <Note />
                             </Suspense>
                         } />
+                        <Route path="/test" element={
+                            <Suspense
+                                key={"test"}
+                                fallback={<Loading />}
+                            >
+                                <Test />
+                            </Suspense>
+                        } />
                         <Route path="/*" element={
                             <Suspense
                                 key={"not-found"}
@@ -75,6 +84,7 @@ function App() {
                             </Suspense>
                         } />
                     </Routes>
+
                     <BottomNavBar />
                 </GradientBox>
 
