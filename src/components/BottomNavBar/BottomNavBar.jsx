@@ -47,7 +47,6 @@ const BottomNavBar = ({
 
 
     useEffect(() => {
-        console.log(navBarState);
         if (navBarState === NavBarState.ANIMATING_OUT) {
             const timeout = setTimeout(
                 () => setNavBarState(NavBarState.HIDDEN),
@@ -64,7 +63,6 @@ const BottomNavBar = ({
     }, [navBarState]);
 
     useEffect(() => {
-        console.log(shouldHide());
         if (shouldHide()) {
             if (
                 navBarState === NavBarState.HIDDEN ||
