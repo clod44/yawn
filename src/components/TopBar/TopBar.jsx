@@ -6,7 +6,6 @@ import { FaTasks } from "react-icons/fa";
 
 const TopBar = () => {
     const { pathname } = useLocation();
-    console.log(pathname);
     /*
         Order of these bars is important!
         it should be from most complicated to least
