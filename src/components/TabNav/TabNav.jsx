@@ -22,7 +22,7 @@ const TabNav = ({
                 return (
                     <Link key={index} to={tab.path} style={{ textDecoration: "none" }}>
                         <Button
-                            className={"w-full h-full py-2 cursor-pointer " + (active && "animate-in fade-in-0 slide-in-from-bottom-1")}
+                            className={"w-full h-full py-2 cursor-pointer " + (active && "animate-in slide-in-from-bottom-1")}
                             variant={
                                 active
                                     ? tab.activeVariant ?? "classic"
