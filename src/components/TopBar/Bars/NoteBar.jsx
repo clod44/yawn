@@ -18,7 +18,7 @@ const NoteBar = ({
             position={"fixed"}
             top={"0"}
             height={"4rem"}
-            className="z-[50] animate-in fade-in duration-300"
+            className="z-[50]"
         >
             <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
                 <Flex gap="3" align={"center"}>
