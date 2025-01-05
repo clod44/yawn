@@ -53,7 +53,7 @@ function App() {
                                 <ToDo />
                             </Suspense>
                         } />
-                        <Route path="/note" element={
+                        <Route path="/note/:id" element={
                             <Suspense
                                 key={"note"}
                                 fallback={<Loading />}
