@@ -1,3 +1,4 @@
 import HomeBarDropdown from "./HomeBarDropdown.jsx";
+import NoteBarDropdown from "./NoteBarDropdown.jsx";
 
-export { HomeBarDropdown };
+export { HomeBarDropdown, NoteBarDropdown };
