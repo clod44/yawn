@@ -1,7 +1,7 @@
 import { Flex, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import GradientBox from "../../GradientBox";
-import BarDropdown from "./BarDropdown";
+import { HomeBarDropdown } from "./BarDropdown";
 import { IoIosArrowBack } from "react-icons/io";
 
 
@@ -36,7 +36,7 @@ const NoteBar = ({
                         {note.title}
                     </Text>
                 </Flex>
-                <BarDropdown />
+                <HomeBarDropdown />
             </Flex>
         </GradientBox>
     )

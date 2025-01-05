@@ -3,7 +3,7 @@ import { FaSearch } from "react-icons/fa";
 import { GiCardboardBox, GiCardboardBoxClosed } from "react-icons/gi";
 import { useMisc } from "../../../context/MiscContext";
 import GradientBox from "../../GradientBox";
-import BarDropdown from "./BarDropdown";
+import { HomeBarDropdown } from "./BarDropdown";
 
 const HomeBar = () => {
     const { toggleShowArchiveNotes, setToggleShowArchiveNotes } = useMisc();
@@ -41,7 +41,7 @@ const HomeBar = () => {
                         <FaSearch />
                     </TextField.Slot>
                 </TextField.Root>
-                <BarDropdown />
+                <HomeBarDropdown />
             </Flex>
         </GradientBox>
     )

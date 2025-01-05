@@ -1,3 +1,3 @@
-import BarDropdown from "./BarDropdown.jsx";
+import HomeBarDropdown from "./HomeBarDropdown.jsx";
 
-export default BarDropdown;
+export { HomeBarDropdown };

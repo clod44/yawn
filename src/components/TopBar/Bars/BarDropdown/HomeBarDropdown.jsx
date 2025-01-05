@@ -1,7 +1,7 @@
 import { useSettings } from "../../../../context/SettingsContext";
 import { Avatar, DropdownMenu, Switch } from "@radix-ui/themes";
 
-const BarDropdown = () => {
+const HomeBarDropdown = () => {
     const { theme, setTheme } = useSettings();
 
     const handleThemeToggle = () => {
@@ -42,4 +42,4 @@ const BarDropdown = () => {
     );
 }
 
-export default BarDropdown;
+export default HomeBarDropdown;

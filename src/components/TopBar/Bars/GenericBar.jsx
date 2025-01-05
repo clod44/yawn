@@ -1,7 +1,7 @@
 import { Flex, Text } from "@radix-ui/themes";
 import { Link } from "react-router-dom";
 import GradientBox from "../../GradientBox";
-import BarDropdown from "./BarDropdown";
+import { HomeBarDropdown } from "./BarDropdown";
 
 
 const GenericBar = ({
@@ -35,7 +35,7 @@ const GenericBar = ({
                         </Link>
                     </Text>
                 </Flex>
-                <BarDropdown />
+                <HomeBarDropdown />
             </Flex>
         </GradientBox>
     )
