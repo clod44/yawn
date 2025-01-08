@@ -1,10 +1,11 @@
-
+import Fab from "../components/Fab";
+import { FaPen } from "react-icons/fa";
 
 
 function ToDo() {
     return (
         <div>
-            <h1>ToDo</h1>
+            <Fab icon={<FaPen className="size-6" />} callback={() => { }} />
         </div>
     )
 }
