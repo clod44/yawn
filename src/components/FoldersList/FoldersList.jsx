@@ -25,6 +25,8 @@ const FoldersList = () => {
                     </Flex>
                 ) : (
                     <Grid
+                        //TODO:use virtual list for folders
+                        //virtual list cant be used because folderCards have dynamic height
                         columns="1"
                         gap="3"
                         rows="auto"
