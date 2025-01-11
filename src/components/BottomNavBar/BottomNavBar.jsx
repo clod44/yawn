@@ -86,17 +86,13 @@ const BottomNavBar = ({
                 <>
                     <Box width={"100%"} height={"4rem"}></Box> {/* Spacer */}
                     <GradientBox
-                        width={"100%"}
-                        height={"4rem"}
-                        position={"fixed"}
-                        bottom={"0"}
-                        className={`z-[5] duration-${animateDuration} ${navBarState === NavBarState.ANIMATING_OUT
+                        className={`w-full fixed h-auto bottom-0 z-[5] duration-${animateDuration} ${navBarState === NavBarState.ANIMATING_OUT
                             ? "animate-out fade-out slide-out-to-bottom-full"
                             : navBarState === NavBarState.ANIMATING_IN
                                 ? "animate-in fade-in slide-in-from-bottom-full"
                                 : ""
                             }`}
-                        direction="to-t"
+                        direction="to top"
                         {...props}
                     >
                         <TabNav tabs={tabs} />

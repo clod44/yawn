@@ -1,26 +1,25 @@
-import { Button } from "@radix-ui/themes";
+import { ActionIcon } from '@mantine/core';
 import { useCallback } from "react";
 
 const Fab = ({
     icon = "+",
     callback = () => { },
-    className = "",
     ...props
 }) => {
     const memoizedCallback = useCallback(callback, [callback]);
 
     return (
-        <Button
+        <ActionIcon
             onClick={memoizedCallback}
-            highContrast
-            size={"3"}
-            variant="classic"
-            radius="full"
+            variant="default"
+            color="gray"
+            size={60}
+            radius="xl"
+            className="fixed bottom-28 right-7 z-50 animate-in slide-in-from-right-full fade-in"
             {...props}
-            className={`fixed bottom-28 right-7 size-16 d-flex justify-center items-center rounded-full z-40 shadow-lg cursor-pointer animate-in slide-in-from-right-96 fade-in-0 duration-500 ${className}`}
         >
             {icon}
-        </Button>
+        </ActionIcon>
     );
 };
 

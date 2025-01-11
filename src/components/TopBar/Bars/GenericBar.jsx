@@ -1,4 +1,4 @@
-import { Flex, Text } from "@radix-ui/themes";
+import { Flex, Text, Group } from "@mantine/core";
 import { Link } from "react-router-dom";
 import GradientBox from "../../GradientBox";
 import { HomeBarDropdown } from "./BarDropdown";
@@ -13,28 +13,30 @@ const GenericBar = ({
 
     return (
         <GradientBox
-            width={"100%"}
-            position={"fixed"}
-            top={"0"}
-            height={"4rem"}
-            className="z-[50]"
+            className="w-full fixed top-0 h-16 z-[50]"
         >
-            <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
-                <Flex gap="3" align={"center"}>
+            <Flex
+                width={"100%"}
+                height={"100%"}
+                p={"md"}
+                gap="md"
+                justify="space-between"
+                align="center"
+                direction="row"
+                wrap="nowrap"
+            >
+
+                <Group>
                     {icon}
                     <Text
-                        size={"5"}
-                        asChild
-                        color="gray"
-                        className="font-thin" >
-                        <Link
-                            to={path}
-                            className="cursor-pointer font-thin"
-                        >
-                            {title}
-                        </Link>
+                        c="dimmed"
+                        className=" text-nowrap"
+                        component={Link}
+                        to={path}
+                    >
+                        {title}
                     </Text>
-                </Flex>
+                </Group>
                 <HomeBarDropdown />
             </Flex>
         </GradientBox>

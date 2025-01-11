@@ -1,5 +1,5 @@
 import { useSettings } from "../../../../context/SettingsContext";
-import { Avatar, DropdownMenu, Switch } from "@radix-ui/themes";
+import { Menu, Text, Avatar } from '@mantine/core';
 
 const HomeBarDropdown = () => {
     const { theme, setTheme } = useSettings();
@@ -9,36 +9,49 @@ const HomeBarDropdown = () => {
     };
 
     return (
-        <DropdownMenu.Root>
-            <DropdownMenu.Trigger>
+        <Menu shadow="md" width={200}>
+            <Menu.Target>
                 <Avatar
-                    size={"1"}
-                    radius="full"
+                    size="sm"
                     src="https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=256&h=256&q=70&crop=focalpoint&fp-x=0.5&fp-y=0.3&fp-z=1&fit=crop"
-                    fallback="A"
                 />
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
-                <DropdownMenu.Item shortcut="⌘ E">Profile</DropdownMenu.Item>
-                <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
-                <DropdownMenu.Separator />
+            </Menu.Target>
 
-                <DropdownMenu.Item
-                    onSelect={event => event.preventDefault()}
+            <Menu.Dropdown>
+                <Menu.Label>Application</Menu.Label>
+                <Menu.Item>
+                    Settings
+                </Menu.Item>
+                <Menu.Item >
+                    Messages
+                </Menu.Item>
+                <Menu.Item >
+                    Gallery
+                </Menu.Item>
+                <Menu.Item
+                    rightSection={
+                        <Text size="xs" c="dimmed">
+                            ⌘K
+                        </Text>
+                    }
                 >
-                    <label>Dark mode</label>
-                    <Switch
-                        checked={theme === "dark"}
-                        onCheckedChange={handleThemeToggle}
-                    />
-                </DropdownMenu.Item>
+                    Search
+                </Menu.Item>
 
-                <DropdownMenu.Separator />
-                <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
-                    Logout
-                </DropdownMenu.Item>
-            </DropdownMenu.Content>
-        </DropdownMenu.Root>
+                <Menu.Divider />
+
+                <Menu.Label>Danger zone</Menu.Label>
+                <Menu.Item
+                >
+                    Transfer my data
+                </Menu.Item>
+                <Menu.Item
+                    color="red"
+                >
+                    Delete my account
+                </Menu.Item>
+            </Menu.Dropdown>
+        </Menu>
     );
 }
 

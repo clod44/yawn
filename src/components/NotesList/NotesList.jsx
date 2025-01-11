@@ -1,6 +1,6 @@
 import { useState, useEffect, useTransition } from "react";
-import { ScrollArea, Spinner, Flex } from "@radix-ui/themes";
-import VirtualList from "../VirtualList";
+import { ScrollArea, Grid } from '@mantine/core';
+import Loading from "../Loading";
 import NoteCard from "./NoteCard.jsx";
 
 const NotesList = () => {
@@ -11,31 +11,30 @@ const NotesList = () => {
     useEffect(() => {
         setLoading(true);
         startTransition(() => {
-            setNotes(Array.from({ length: 200 }, (_, index) => ({ id: index, content: `Note ${index}` })));
+            setNotes(Array.from({ length: 20 }, (_, index) => ({ id: index, content: `Note ${index}` })));
         });
         setLoading(false);
     }, []);
 
     return (
-        <ScrollArea>
-            {(isPending || loading) ? (
-                <Flex justify={"center"} align={"center"} height={"100%"} gap="3" direction={"column"}>
-                    <Spinner />
-                </Flex>
-            ) : (
-                <VirtualList
-                    data={notes}
-                    paddingSize={60}
-                    itemSize={100}
-                    className="pb-52"
-                    renderItem={({ index, style }) => (
-                        <div key={notes[index].id} style={style} className="p-3 py-1">
-                            <NoteCard note={notes[index]} index={index} className="w-full h-full" />
-                        </div>
-                    )}
-                />
-            )}
-        </ScrollArea>
+        (isPending || loading) ? (
+            <Loading />
+        ) : (
+
+            <ScrollArea
+                h={"100%"}
+            >
+                <Grid grow gutter="xs"
+                    className="p-2 animate-in fade-in duration-200 pt-16 pb-64">
+                    {notes.map((note, index) => (
+                        <Grid.Col span={12} key={index}>
+                            <NoteCard note={note} index={index} />
+                        </Grid.Col>
+                    ))}
+                </Grid>
+            </ScrollArea >
+
+        )
     );
 };
 

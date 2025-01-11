@@ -1,42 +1,37 @@
-import { Grid, Button } from "@radix-ui/themes";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, useNavigate } from 'react-router-dom';
+import { Tabs, Text } from '@mantine/core';
 import { FaHome } from "react-icons/fa";
 
 const TabNav = ({
     tabs = [
-        {
-            path: "/",
-            icon: FaHome,
-            title: "Home",
-            activeVariant: "classic",
-            passiveVariant: "ghost",
-        }
+        { path: "/", icon: FaHome, title: "Home" }
     ],
     ...props
 }) => {
     const location = useLocation();
+    const navigate = useNavigate();
+
+    const currentTab = "/" + location.pathname.split('/')[1];
+
+
     return (
-        <Grid columns={`${tabs.length}`} gap="3" rows="1" width="auto" p={"3"}>
-            {tabs.map((tab, index) => {
-                const active = location.pathname === tab.path;
-                return (
-                    <Link key={index} to={tab.path} style={{ textDecoration: "none" }}>
-                        <Button
-                            className={"w-full h-full py-2 cursor-pointer " + (active && "animate-in slide-in-from-bottom-1")}
-                            variant={
-                                active
-                                    ? tab.activeVariant ?? "classic"
-                                    : tab.passiveVariant ?? "ghost"
-                            }
-                            highContrast={active}
-                        >
+        <Tabs
+            keepMounted={false}
+            value={currentTab}
+            onChange={(value) => navigate(value)}
+            {...props}
+        >
+            <Tabs.List grow>
+                {tabs.map((tab, index) => (
+                    <Tabs.Tab key={index} value={tab.path}>
+                        <Text size="sm" c={currentTab === tab.path ? "blue" : "dimmed"}>
                             {tab.icon && <tab.icon size={20} />}
                             {tab.title}
-                        </Button>
-                    </Link>
-                );
-            })}
-        </Grid>
+                        </Text>
+                    </Tabs.Tab>
+                ))}
+            </Tabs.List>
+        </Tabs>
     );
 };
 

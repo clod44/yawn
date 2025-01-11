@@ -1,11 +1,16 @@
-import { Flex, Spinner } from "@radix-ui/themes";
+import { Flex, Loader } from "@mantine/core";
 
 const Loading = ({
     ...props
 }) => {
     return (
-        <Flex justify={"center"} align={"center"} height={"100%"} gap="3" direction={"column"} {...props}>
-            <Spinner size={"5"} />
+        <Flex
+            justify="center"
+            align="center"
+            w={"100%"}
+            h={"100%"}
+        >
+            <Loader color="gray" size="xs" type="bars" />
         </Flex>
     );
 };

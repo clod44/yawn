@@ -20,11 +20,8 @@ function App() {
     return (
         <>
             <Router>
-                <GradientBox
-                    width={"100%"}
-                    height={"100%"}
-                    position={"fixed"}
-                    top={"0"}
+                <div
+                    className="w-full fixed top-0 h-full z-50 "
                 >
                     <TopBar />
                     <Routes>
@@ -78,10 +75,8 @@ function App() {
                             </Suspense>
                         } />
                     </Routes>
-
                     <BottomNavBar />
-                </GradientBox>
-
+                </div>
             </Router >
         </>
     )

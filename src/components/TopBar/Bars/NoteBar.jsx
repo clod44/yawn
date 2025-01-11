@@ -1,4 +1,4 @@
-import { Flex, TextField } from "@radix-ui/themes";
+import { Flex, ActionIcon, Input, Group } from "@mantine/core";
 import { Link } from "react-router-dom";
 import GradientBox from "../../GradientBox";
 import { NoteBarDropdown } from "./BarDropdown";
@@ -14,27 +14,34 @@ const NoteBar = ({
 
     return (
         <GradientBox
-            width={"100%"}
-            position={"fixed"}
-            top={"0"}
-            height={"4rem"}
-            className="z-[50]"
+            className="w-full fixed top-0 h-16 z-[50]"
         >
-            <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
-                <Flex gap="3" align={"center"} className="flex-grow">
-                    <Link
-                        to="/"
-                    >
-                        <IoIosArrowBack size={24} />
-                    </Link>
-                    <TextField.Root
-                        placeholder="Title"
-                        variant="classic"
-                        className="flex-grow"
-                        size={"3"}
-                    >
-                    </TextField.Root>
-                </Flex>
+            <Flex
+                width={"100%"}
+                height={"100%"}
+                p={"md"}
+                gap="md"
+                justify="space-between"
+                align="center"
+                direction="row"
+                wrap="nowrap"
+            >
+
+                <ActionIcon
+                    variant="subtle"
+                    color="gray"
+                    component={Link}
+                    to="/"
+                >
+                    <IoIosArrowBack />
+                </ActionIcon>
+
+                <Input
+                    w={"100%"}
+                    placeholder="My Note"
+                    value={note.title}
+                    {...props}
+                />
                 <NoteBarDropdown />
             </Flex>
         </GradientBox>

@@ -1,29 +1,52 @@
-import { DropdownMenu, Box } from "@radix-ui/themes";
+import { Menu, Text, ActionIcon } from '@mantine/core';
+import { GoChevronDown } from "react-icons/go";
 
-const NoteCardDropdown = () => {
+function NotesCardDropdown() {
     return (
-        <DropdownMenu.Root>
-            <DropdownMenu.Trigger>
-                <Box p={"2"} height={"100%"}>
-                    <DropdownMenu.TriggerIcon />
-                </Box>
-            </DropdownMenu.Trigger>
-            <DropdownMenu.Content>
-                <DropdownMenu.Item shortcut="⌘ E">Edit</DropdownMenu.Item>
-                <DropdownMenu.Item shortcut="⌘ D">Duplicate</DropdownMenu.Item>
-                <DropdownMenu.Separator />
-                <DropdownMenu.Item shortcut="⌘ N">Archive</DropdownMenu.Item>
-                <DropdownMenu.Item>Move to folder…</DropdownMenu.Item>
-                <DropdownMenu.Separator />
-                <DropdownMenu.Item>Share</DropdownMenu.Item>
-                <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
-                <DropdownMenu.Separator />
-                <DropdownMenu.Item shortcut="⌘ ⌫" color="red">
-                    Delete
-                </DropdownMenu.Item>
-            </DropdownMenu.Content>
-        </DropdownMenu.Root>
-    );
-};
+        <Menu shadow="md" width={200}>
+            <Menu.Target>
+                <ActionIcon variant="subtle" color="gray" size="xl" aria-label="Settings">
+                    <GoChevronDown />
+                </ActionIcon>
+            </Menu.Target>
 
-export default NoteCardDropdown;
+            <Menu.Dropdown>
+                <Menu.Label>Application</Menu.Label>
+                <Menu.Item>
+                    Settings
+                </Menu.Item>
+                <Menu.Item >
+                    Messages
+                </Menu.Item>
+                <Menu.Item>
+                    Gallery
+                </Menu.Item>
+                <Menu.Item
+
+                    rightSection={
+                        <Text size="xs" c="dimmed">
+                            ⌘K
+                        </Text>
+                    }
+                >
+                    Search
+                </Menu.Item>
+
+                <Menu.Divider />
+
+                <Menu.Label>Danger zone</Menu.Label>
+                <Menu.Item
+                >
+                    Transfer my data
+                </Menu.Item>
+                <Menu.Item
+                    color="red"
+                >
+                    Delete my account
+                </Menu.Item>
+            </Menu.Dropdown>
+        </Menu>
+    );
+}
+
+export default NotesCardDropdown

@@ -1,6 +1,5 @@
-import { Text, Flex, Box } from "@radix-ui/themes";
 import NoteCardDropdown from "./NoteCardDropdown";
-import Card from "../Card";
+import { Card, Text, Group, Stack } from '@mantine/core';
 import { Link } from "react-router-dom";
 
 
@@ -13,18 +12,24 @@ const NoteCard = ({
 }) => {
     return (
         <>
-            <Card className={`animate-in zoom-in-90 fade-in duration-500 ${className}`} {...props}>
-                <Flex gap="3" align={"center"} justify={"between"}>
-                    <Link to={`/note/${note?.id || "notfound"}`} className="cursor-pointer flex-grow">
-                        <Box className="w-full">
-                            <Text as="div" size="3" weight="bold">Quick start {index + 1}</Text>
-                            <Text as="div" size="1" weight={"light"} className="text-neutral-500">{new Date().toDateString()}</Text>
-                        </Box>
-                    </Link>
+            <Card shadow="sm" padding="sm" withBorder>
+                <Group justify="space-between" mb="xs">
+                    <Stack
+                        gap={0}
+                        component={Link}
+                        to={`/note/${note.id}`}
+                        className="cursor-pointer"
+                    >
+                        <Text fw={500}>Get Started With Note {index + 1}</Text>
+                        <Text size="xs" c="dimmed">
+                            {new Date().toDateString()}
+                        </Text>
+                    </Stack>
                     <NoteCardDropdown />
-                </Flex>
-                <Text as="div" color="gray" size="2">
-                    Start building your next project in minutes ...
+                </Group>
+
+                <Text size="sm" c="dimmed">
+                    With Fjord Tours you can explore more ...
                 </Text>
             </Card>
         </>

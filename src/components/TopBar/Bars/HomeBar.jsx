@@ -1,4 +1,5 @@
-import { Flex, IconButton, TextField } from "@radix-ui/themes";
+
+import { Flex, ActionIcon, Input } from "@mantine/core";
 import { FaSearch } from "react-icons/fa";
 import { GiCardboardBox, GiCardboardBoxClosed } from "react-icons/gi";
 import { useMisc } from "../../../context/MiscContext";
@@ -10,20 +11,24 @@ const HomeBar = () => {
 
     return (
         <GradientBox
-            width={"100%"}
-            position={"fixed"}
-            top={"0"}
-            height={"4rem"}
-            className="z-[50]"
+            className="w-full fixed top-0 h-16 z-[50]"
         >
-            <Flex width={"100%"} height={"100%"} gap="3" p={"4"} align={"center"} justify={"between"}>
-                <IconButton
-                    variant="ghost"
+            <Flex
+                p={"md"}
+                gap="md"
+                align="center"
+                direction="row"
+                wrap="nowrap"
+                justify="space-between"
+                w={"100%"}
+                h={"100%"}
+            >
+                <ActionIcon
+                    variant="subtle"
+                    color="gray"
                     onClick={() => setToggleShowArchiveNotes(!toggleShowArchiveNotes)}
-                    style={{
-                        background: toggleShowArchiveNotes ? "radial-gradient(circle, rgba(255,255,255, .2) 0%, rgba(255,255,255, 0) 70%)" : "",
-                    }}
                 >
+
                     {toggleShowArchiveNotes ?
                         <GiCardboardBox
                             size={24}
@@ -31,16 +36,9 @@ const HomeBar = () => {
                         /> :
                         <GiCardboardBoxClosed size={24} />
                     }
-                </IconButton>
+                </ActionIcon>
 
-                <TextField.Root
-                    placeholder="Search your notes"
-                    variant="classic"
-                >
-                    <TextField.Slot>
-                        <FaSearch />
-                    </TextField.Slot>
-                </TextField.Root>
+                <Input placeholder="Search" leftSection={<FaSearch />} />
                 <HomeBarDropdown />
             </Flex>
         </GradientBox>

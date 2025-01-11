@@ -1,16 +1,21 @@
-import { TextArea } from "@radix-ui/themes";
+import { Textarea, ScrollArea } from "@mantine/core";
 
 
 function Note({
     ...props
 }) {
     return (
-        <div className="pt-16 h-full">
-            <TextArea
-                variant="classic"
-                placeholder=""
-                className="h-full rounded-none" />
-        </div>
+        <ScrollArea h={"100%"}>
+            <div className="pt-16 h-full">
+                <Textarea
+                    autosize
+                    c={"blue"}
+                    placeholder="Write your note here..."
+                    className="w-full h-full"
+                    {...props}
+                />
+            </div>
+        </ScrollArea>
     );
 }
 
