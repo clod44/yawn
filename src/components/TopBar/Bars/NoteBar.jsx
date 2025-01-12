@@ -39,7 +39,7 @@ const NoteBar = ({
                 <Input
                     w={"100%"}
                     placeholder="My Note"
-                    value={note.title}
+                    defaultValue={note.title}
                     {...props}
                 />
                 <NoteBarDropdown />
