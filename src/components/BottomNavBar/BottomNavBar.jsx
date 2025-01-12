@@ -1,7 +1,7 @@
 import { FaHome } from "react-icons/fa";
 import { FaTasks } from "react-icons/fa";
 import { IoFolderOpen } from "react-icons/io5";
-import { Box } from "@radix-ui/themes";
+import { Box } from "@mantine/core";
 import GradientBox from "../GradientBox";
 import TabNav from "../TabNav";
 import { useLocation } from "react-router";

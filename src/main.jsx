@@ -1,23 +1,26 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import '@mantine/core/styles.css';
-import { MantineProvider } from '@mantine/core';
-import "@radix-ui/themes/styles.css";
+import { MantineProvider, createTheme } from '@mantine/core';
 import './index.css'
 import App from './App.jsx'
 import { SettingsProvider } from "./context/SettingsContext.jsx"
-import ThemeWrapper from "./components/ThemeWrapper/ThemeWrapper.jsx";
 import { MiscProvider } from './context/MiscContext.jsx';
+
+const theme = createTheme({
+    primaryColor: 'cyan',
+    focusRing: 'never',
+    white: '#fff',
+    black: '#000',
+});
 
 createRoot(document.getElementById('root')).render(
     <StrictMode>
-        <MantineProvider>
+        <MantineProvider theme={theme} defaultColorScheme="dark">
             <SettingsProvider>
-                <ThemeWrapper>
-                    <MiscProvider>
-                        <App />
-                    </MiscProvider>
-                </ThemeWrapper>
+                <MiscProvider>
+                    <App />
+                </MiscProvider>
             </SettingsProvider>
         </MantineProvider>
     </StrictMode>

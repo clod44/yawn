@@ -1,4 +1,4 @@
-import { useMantineTheme } from '@mantine/core';
+import { useMantineTheme, useComputedColorScheme } from '@mantine/core';
 
 const GradientBox = ({
     direction = "to bottom",
@@ -7,7 +7,7 @@ const GradientBox = ({
     ...props
 }) => {
     const theme = useMantineTheme();
-    const isDarkMode = theme.colorScheme === 'dark';
+    const isDarkMode = useComputedColorScheme() === 'dark';
 
     const gradientFrom = isDarkMode ? theme.colors.dark[7] : theme.white;
     const gradientStyle = `linear-gradient(${direction}, ${gradientFrom}, ${gradientFrom}, transparent)`;

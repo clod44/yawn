@@ -1,11 +1,17 @@
-import { Flex } from "@radix-ui/themes";
+import { Flex } from "@mantine/core";
 import { FaHeartBroken } from "react-icons/fa";
 
 const SomethingWentWrong = ({
     ...props
 }) => {
     return (
-        <Flex justify={"center"} align={"center"} height={"100%"} gap="3" direction={"column"} {...props}>
+        <Flex
+            w={"100%"}
+            h={"100%"}
+            justify="center"
+            align="center"
+            {...props}
+        >
             <FaHeartBroken className="size-6 animate-pulse" />
         </Flex>
     );
